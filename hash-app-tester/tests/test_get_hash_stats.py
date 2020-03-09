@@ -49,6 +49,7 @@ class TestGetStats(unittest.TestCase):
         url = self.base_url + ':' + self.port + '/' + 'stats'
         response = get_hash_stats(url)
         self.assertEqual(response.status_code, codes.OK, 'INVALID Status Code')
+        # validate reponse against the json schema
         jsonschema.validate(response.json(), self.stats_schema)
         self.assertEqual(
             response.json()['TotalRequests'], 0, 'Invalid Initial Value for TotalRequests')
@@ -59,6 +60,7 @@ class TestGetStats(unittest.TestCase):
         url = self.base_url + ':' + self.port + '/' + 'stats'
         response = get_hash_stats(url)
         self.assertEqual(response.status_code, codes.OK, 'INVALID Status Code')
+        # validate reponse against the json schema
         jsonschema.validate(response.json(), self.stats_schema)
         job_count, avgTime = response.json()['TotalRequests'], response.json()[
             'AverageTime']
@@ -70,6 +72,7 @@ class TestGetStats(unittest.TestCase):
         url = self.base_url + ':' + self.port + '/' + 'stats'
         response = get_hash_stats(url)
         self.assertEqual(response.status_code, codes.OK, 'INVALID Status Code')
+        # validate reponse against the json schema
         jsonschema.validate(response.json(), self.stats_schema)
         job_count, avgTime = response.json()['TotalRequests'], response.json()[
             'AverageTime']
@@ -83,6 +86,7 @@ class TestGetStats(unittest.TestCase):
         time.sleep(5)
         response = get_hash_stats(url)
         self.assertEqual(response.status_code, codes.OK, 'INVALID Status Code')
+        # validate reponse against the json schema
         jsonschema.validate(response.json(), self.stats_schema)
         new_job_count, avgTime = response.json()['TotalRequests'], response.json()[
             'AverageTime']
