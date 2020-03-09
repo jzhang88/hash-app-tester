@@ -4,8 +4,6 @@ Start the app:
 1020 verify the app can start again after shutting down
 1030 verify the app can start on different ports 
 
-start the app twice on the same port???
-
 POST:
 2000 verify successful POST returns 200 OK and a job id
 2010 verify successful POST returns a job id immediately
@@ -20,8 +18,6 @@ POST:
 2100 verify post password in other languages (missing req: i18n support)
 2110 verify post with invalid payload (400)
 2120 verify post with invalid header??? missing req
-
-
 
 
 GET base64 encoded password
@@ -41,7 +37,6 @@ GET the stats
 4010 verify GET stats returns 200 OK and correct stats in json format
 4020 verify GET stats returns updated job count and averageTime
  - TODO: add more tests to validate averageTime. Currently blocked by bug #8.
-
 
 
 Not supported:
