@@ -20,23 +20,26 @@ Hash app tester written in Python
    - hashlib
    - jsonschema
 
-   4. Testing Scope
+   5. Testing Scope
    - Verify status code and response of all the supported requests
    - Verify proper error message is returned for invalid requests
    - Verify unsupported requests are rejected with correct status code and error message
    - Verify simultaneous requets can be handled peroperly to meet certain performance requirement
    
-   5. List of test cases
+   6. List of test cases
    - List of test cases can be found in /docs/testcases
    - automated tests can be found under /tests
    
-   6. Utility files
+   7. Sample execution output
+   - A sample of execution output can be found at /docs/sample_output_of_test_executions
+   
+   8. Utility files
    - Base functions to send CRUD requests can be found in /lib/hashing_crud.py
    - Password generations and String Hashing functions can be found in /lib/string_hash_utils.py
    
-   7. Schemas
+   9. Schemas
    - JSON schema used to verify stats reponse can be found in /schema/hash_stats.json
    
-   8. Defects found
+   10. Defects found
    - List of defects can be found in /docs/defects
 
