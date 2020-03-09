@@ -2,7 +2,7 @@
 FAIL: test_get_hash_with_non_digital_job_id_3070 (tests.test_get_hash.TestGet)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_get_hash.py", line 139, in test_get_hash_with_non_digital_job_id_3070
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_get_hash.py", line 140, in test_get_hash_with_non_digital_job_id_3070
     'Invalid Error Message')
 AssertionError: 'strconv.Atoi: parsing "one": invalid syntax' != 'Invalid Syntax'
 - strconv.Atoi: parsing "one": invalid syntax
@@ -13,7 +13,7 @@ AssertionError: 'strconv.Atoi: parsing "one": invalid syntax' != 'Invalid Syntax
 FAIL: test_delete_stats_not_supported_5070 (tests.test_get_hash_stats.TestGetStats)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_get_hash_stats.py", line 141, in test_delete_stats_not_supported_5070
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_get_hash_stats.py", line 141, in test_delete_stats_not_supported_5070
     codes.NOT_ALLOWED, 'INVALID Status Code')
 AssertionError: 200 != 405 : INVALID Status Code
 
@@ -21,7 +21,7 @@ AssertionError: 200 != 405 : INVALID Status Code
 FAIL: test_get_hash_stats_returns_updated_stats_4020 (tests.test_get_hash_stats.TestGetStats)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_get_hash_stats.py", line 92, in test_get_hash_stats_returns_updated_stats_4020
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_get_hash_stats.py", line 92, in test_get_hash_stats_returns_updated_stats_4020
     avgTime > 0, 'BUG: Invalid AverageTime Returned in Stats')
 AssertionError: False is not true : BUG: Invalid AverageTime Returned in Stats
 
@@ -29,7 +29,7 @@ AssertionError: False is not true : BUG: Invalid AverageTime Returned in Stats
 FAIL: test_post_stats_not_supported_5050 (tests.test_get_hash_stats.TestGetStats)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_get_hash_stats.py", line 105, in test_post_stats_not_supported_5050
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_get_hash_stats.py", line 105, in test_post_stats_not_supported_5050
     codes.NOT_ALLOWED, 'INVALID Status Code')
 AssertionError: 200 != 405 : INVALID Status Code
 
@@ -37,7 +37,7 @@ AssertionError: 200 != 405 : INVALID Status Code
 FAIL: test_put_stats_not_supported_5060 (tests.test_get_hash_stats.TestGetStats)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_get_hash_stats.py", line 123, in test_put_stats_not_supported_5060
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_get_hash_stats.py", line 123, in test_put_stats_not_supported_5060
     codes.NOT_ALLOWED, 'INVALID Status Code')
 AssertionError: 200 != 405 : INVALID Status Code
 
@@ -45,7 +45,7 @@ AssertionError: 200 != 405 : INVALID Status Code
 FAIL: test_post_with_wrong_header_2120 (tests.test_post_hash.TestPOST)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_post_hash.py", line 162, in test_post_with_wrong_header_2120
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_post_hash.py", line 162, in test_post_with_wrong_header_2120
     codes.BAD_REQUEST, 'INVALID Status Code')
 AssertionError: 200 != 400 : INVALID Status Code
 
@@ -53,7 +53,7 @@ AssertionError: 200 != 400 : INVALID Status Code
 FAIL: test_post_without_password_2060 (tests.test_post_hash.TestPOST)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_post_hash.py", line 105, in test_post_without_password_2060
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_post_hash.py", line 105, in test_post_without_password_2060
     codes.BAD_REQUEST, 'INVALID Status Code')
 AssertionError: 200 != 400 : INVALID Status Code
 
@@ -61,11 +61,11 @@ AssertionError: 200 != 400 : INVALID Status Code
 FAIL: test_valid_post_returns_id_immediately_2010 (tests.test_post_hash.TestPOST)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\zgg\Documents\eclipse-workspace\jumpcloud-test\tests\test_post_hash.py", line 56, in test_valid_post_returns_id_immediately_2010
+  File "C:\Users\zgg\git\hash-app-tester\hash-app-tester\tests\test_post_hash.py", line 56, in test_valid_post_returns_id_immediately_2010
     < 5, 'Job Id Did not Return Immediately')
 AssertionError: False is not true : Job Id Did not Return Immediately
 
 ----------------------------------------------------------------------
-Ran 31 tests in 143.163s
+Ran 36 tests in 144.129s
 
 FAILED (failures=8)

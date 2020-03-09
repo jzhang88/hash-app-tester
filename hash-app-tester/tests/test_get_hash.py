@@ -8,7 +8,8 @@ from datetime import datetime
 import os
 import json
 from requests import codes
-from hashing_crud import post_hash, get_hash, get_hash_by_id, get_hash_stats
+from hashing_crud import post_hash, get_hash, get_hash_by_id, get_hash_stats, \
+    post_hash_by_id, put_hash_by_id, del_hash_by_id
 from string_hash_utils import gen_password, get_sha512_hashing,\
     get_base64_encoding
 
@@ -102,7 +103,7 @@ class TestGet(unittest.TestCase):
 
     def test_get_valid_job_id_returns_correct_hash_i28n_3050(self):
         url = self.base_url + ':' + self.port + '/' + 'hash'
-        pwd = '密码'
+        pwd = 'å¯†ç �'
         payload = {'password': pwd}
         response = post_hash(url, self.headers, payload)
         job_id = response.text
@@ -149,7 +150,26 @@ class TestGet(unittest.TestCase):
         self.assertEqual(response.text.strip(), 'GET Not Supported',
                          'Invalid Error Message')
 
+    def test_post_hash_id_not_supported_5020(self):
+        url = self.base_url + ':' + self.port + '/' + 'hash'
+        payload = 'dgffjgdhsdgh4wf23rg6hefs3565'
+        response = post_hash_by_id(10000, url, self.headers, payload)
+        self.assertEqual(response.status_code,
+                         codes.NOT_ALLOWED, 'INVALID Status Code')
+
+    def test_put_hash_id_not_supported_5030(self):
+        url = self.base_url + ':' + self.port + '/' + 'hash'
+        payload = 'dgffjgdhsdgh4wf23rg6hefs3565'
+        response = put_hash_by_id(1, url, self.headers, payload)
+        self.assertEqual(response.status_code,
+                         codes.NOT_ALLOWED, 'INVALID Status Code')
+
+    def test_delete_hash_id_not_supported_5040(self):
+        url = self.base_url + ':' + self.port + '/' + 'hash/1'
+        response = del_hash_by_id(1, url)
+        self.assertEqual(response.status_code,
+                         codes.NOT_ALLOWED, 'INVALID Status Code')
+
 
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

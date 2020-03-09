@@ -20,6 +20,25 @@ def post_hash(url, headers, payload, timeout=10):
         return e
 
 
+def put_hash(url, headers, payload, timeout=10):
+    try:
+        response = requests.put(url, headers=headers,
+                                data=json.dumps(payload), timeout=timeout)
+        return response
+    except requests.exceptions.RequestException as e:
+        print(e)
+        return e
+
+
+def del_hash(url):
+    try:
+        response = requests.delete(url)
+        return response
+    except requests.exceptions.RequestException as e:
+        print(e)
+        return e
+
+
 def post_shutdown(url, headers, payload):
     try:
         response = requests.post(url, headers=headers,
@@ -48,10 +67,21 @@ def get_hash_by_id(url, job_id):
         return e
 
 
+def post_hash_by_id(job_id, url, headers, payload, timeout=10):
+    try:
+        response = requests.post(url + '/' + str(job_id), headers=headers,
+                                 data=payload, timeout=timeout)
+        print(response)
+        return response
+    except requests.exceptions.RequestException as e:
+        print(e)
+        return e
+
+
 def put_hash_by_id(job_id, url, headers, payload, timeout=10):
     try:
         response = requests.put(url + '/' + str(job_id), headers=headers,
-                                data=json.dumps(payload), timeout=timeout)
+                                data=payload, timeout=timeout)
         print(response)
         return response
     except requests.exceptions.RequestException as e:

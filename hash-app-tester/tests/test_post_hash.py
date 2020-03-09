@@ -7,7 +7,7 @@ import unittest
 from datetime import datetime
 import os
 from requests import codes
-from hashing_crud import post_hash
+from hashing_crud import post_hash, put_hash, del_hash
 from string_hash_utils import gen_password
 
 
@@ -162,6 +162,19 @@ class TestPOST(unittest.TestCase):
                          codes.BAD_REQUEST, 'INVALID Status Code')
         self.assertEqual(response.text.strip(), 'Malformed Input',
                          'Invalid Error Message')
+
+    def test_put_hash_not_supported_5000(self):
+        url = self.base_url + ':' + self.port + '/' + 'hash'
+        payload = {'password': 'angrymonkey'}
+        response = put_hash(url, self.headers, payload)
+        self.assertEqual(response.status_code,
+                         codes.NOT_ALLOWED, 'INVALID Status Code')
+
+    def test_delete_hash_not_supported_5010(self):
+        url = self.base_url + ':' + self.port + '/' + 'hash'
+        response = del_hash(url)
+        self.assertEqual(response.status_code,
+                         codes.NOT_ALLOWED, 'INVALID Status Code')
 
 
 if __name__ == "__main__":
