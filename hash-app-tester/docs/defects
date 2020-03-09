@@ -1,0 +1,29 @@
+Bug1: POST hash does not return 200 immediately. It only returns after 5 seconds when hashing is done
+Bug2: POST hash without password returns 200 OK
+Bug3: POST hash with wrong header returns 200 OK
+Bug4: POST /stats returns 200 OK (expected 405. missing req)
+Bug5: PUT /stats returns 200 OK (expected 405. missing req)
+Bug6: DELETE /stats returns 200 OK (expected 405. missing req)
+
+Bug7: POST shutdown does not return 200 OK when there is no in-flight hashing.
+	  It stops the app immediately and results in http connection error on client side
+Bug8: GET /stats always returns AverageTime as 0 in response json
+		-run 1 post at a time
+		{"TotalRequests":5,"AverageTime":0}
+		{"TotalRequests":25,"AverageTime":0}
+		{"TotalRequests":44,"AverageTime":0}
+		{"TotalRequests":116,"AverageTime":0}
+		
+		- run 5 post in parallel
+		{"TotalRequests":30,"AverageTime":0}
+		{"TotalRequests":50,"AverageTime":0}
+
+
+		- start the app and run with 10 post in parallel. AverageTime is way off (>100 seconds in this case)
+		{"TotalRequests":10,"AverageTime":100050}
+
+
+Bug: Raw error returned by some invalid requests. E.g. Get hash with non-digital job id
+	 sent: GET http://127.0.0.1:8088/hash/one
+	 received: strconv.Atoi: parsing "one": invalid syntax
+	 expected: formalized error message

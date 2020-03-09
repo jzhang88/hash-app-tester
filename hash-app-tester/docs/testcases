@@ -1,0 +1,71 @@
+Start the app:
+1000 verify the app starts on listens on the defined port env var
+1010 verify the app does not start if PORT is not defined
+1020 verify the app can start again after shutting down
+1030 verify the app can start on different ports 
+
+start the app twice on the same port???
+
+POST:
+2000 verify successful POST returns 200 OK and a job id
+2010 verify successful POST returns a job id immediately
+2020 verify job id starts with 1 for the first post
+2030 verify job id increments by 1 for new posts (assume job id increment step is 1)
+2040 verify post with empty password
+2050 verify post with None password (400)
+2060 verify post without password 
+-2070 verify post with non-string password (400) (expected behavior TBD)
+2080 verify post with long password (2048 chars) (missing req)
+2090 verify post password hash with special chars
+2100 verify post password in other languages (missing req: i18n support)
+2110 verify post with invalid payload (400)
+2120 verify post with invalid header??? missing req
+
+
+
+
+GET base64 encoded password
+- 3000 verify GET with a valid job id does not work within 5 seconds of hash????
+3010 verify GET with a valid job id returns hashed password which was POSTed 5 seconds ago
+3020 verify GET with a valid job id returns the correct password hash from encoded from SHA512 to BASE64
+3030 verify GET returns hash for password with special characters
+3040 verify GET returns hash for password with 2048 characters (missing req)
+3050 verify GET returns hash for password in other language (i18n)
+3060 verify GET with invalid job id return 400 Bad Request with message "Hash not found"
+3070 verify GET with non-digital job id returns 400 Bad Request
+3080 verify GET without job id is not supported(405)
+
+
+GET the stats
+4000 verify GET stats works when no jobs exist
+4010 verify GET stats returns 200 OK and correct stats in json format
+4020 verify GET stats returns updated job count and averageTime
+ - TODO: add more tests to validate averageTime. Currently blocked by bug #8.
+
+
+
+Not supported:
+5000 verify PUT /hash is not supported (missing req: 405)
+5010 verify DELETE /hash is not supported (missing req: 405)
+5020 verify POST /hash/<id> is not supported (missing req: 405)
+5030 verify PUT /hash/<id> is not supported (missing req: 405)
+5040 verify DELETE /hash/<id> is not supported (missing req: 405)
+5050 verify POST /stats is not supported (missing req: 405)
+5060 verify PUT /stats is not supported (missing req: 405)
+5070 verify DELETE /stats is not supported (missing req: 405)
+
+POST Shutdown
+6000 verify post shutdown stops the app immediately when there is no active hashing
+6010 verify shutdown returns 200 OK then shutdown the app gracefully when there are hashing in progress
+6020 verify any new request fails if the app has been shutdown(make sure it really shuts down)
+6030 verify in-flight POST should complete before shutdown completes
+6040 verify new POST should be rejected when the app is in pending shutdown state(400?)
+6050 verify new post shutdown is rejected when shutdown is in progress (missing req)
+
+Load/Perf:
+7000 verify the app processes multiple hashing simultaneously
+
+Misc (Not Automated):
+Verify urls with tailing / returns error messages gracefully (missing req)
+verify TotalRequests and AverageTime limit(missing req and data type)
+Verify post with code injection
