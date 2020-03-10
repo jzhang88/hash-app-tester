@@ -12,9 +12,11 @@ from aiohttp import ClientSession
 
 def post_hash(url, headers, payload, timeout=10):
     '''base function for test cases to send post /hash'''
+    if payload:
+        payload = json.dumps(payload)
     try:
         response = requests.post(url, headers=headers,
-                                 data=json.dumps(payload), timeout=timeout)
+                                 data=payload, timeout=timeout)
         return response
     except requests.exceptions.RequestException as e:
         print(e)

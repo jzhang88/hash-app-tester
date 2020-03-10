@@ -23,7 +23,13 @@ Bug8: GET /stats always returns AverageTime as 0 in response json
 		{"TotalRequests":10,"AverageTime":100050}
 
 
-Bug: Raw error returned by some invalid requests. E.g. Get hash with non-digital job id
+Bug9: Raw error returned by some invalid requests. E.g. Get hash with non-digital job id
 	 sent: GET http://127.0.0.1:8088/hash/one
 	 received: strconv.Atoi: parsing "one": invalid syntax
 	 expected: formalized error message
+	 
+Bug10: POST /hash with wrong header returns 200 OK (expected 400. missing req)
+		e.g. header = {'Content-Type': 'multipart/form-data'}
+
+Bug11: POST /hash without password returns 200 OK (expected 400. missing req)
+		e.g. payload = {'something': 'else'}
