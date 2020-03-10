@@ -23,6 +23,8 @@ Hash app tester written in Python
    - jsonschema
 
    5. Testing Scope
+   - Verify the app can start on different port
+   - Verify the app can shutdown gracefully
    - Verify status code and response of all the supported requests
    - Verify proper error message is returned for invalid requests
    - Verify unsupported requests are rejected with correct status code and error message
