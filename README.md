@@ -6,15 +6,17 @@ Hash app tester written in Python
      git clone https://github.com/jzhang88/hash-app-tester.git
  
  2. Run the automated test cases
+ - Put broken-hashserve_win.exe in C:\tmp\jumpcloud
   - From IDE, select individual test suite under tests folder and run as Python-Run or Python unit_test
   - From IDE, select the tests folder and run as Python unit_test
   
   3. Version tested
   
-      hash app: 0c3d817
+      hash app: 0c3d817 (Windows version)
+      
       python: 3.5.2
 
-   4. Python module required
+   4. Python modules required
    - requests
    - aiohttp
    - hashlib
