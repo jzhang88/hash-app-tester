@@ -163,6 +163,16 @@ class TestPOST(unittest.TestCase):
         self.assertEqual(response.text.strip(), 'Malformed Input',
                          'Invalid Error Message')
 
+    def test_post_with_wrong_header_2130(self):
+        payload = None
+        url = self.base_url + ':' + self.port + '/' + 'hash'
+        wrong_headers = {'Content-Type': 'multipart/form-data'}
+        response = post_hash(url, wrong_headers, payload)
+        self.assertEqual(response.status_code,
+                         codes.BAD_REQUEST, 'INVALID Status Code')
+        self.assertEqual(response.text.strip(), 'Malformed Input',
+                         'Invalid Error Message')
+
     def test_put_hash_not_supported_5000(self):
         url = self.base_url + ':' + self.port + '/' + 'hash'
         payload = {'password': 'angrymonkey'}

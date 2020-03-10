@@ -18,6 +18,7 @@ POST:
 2100 verify post password in other languages (missing req: i18n support)
 2110 verify post with invalid payload (400)
 2120 verify post with invalid header??? missing req
+2130 verify post /hash without payload returns 400
 
 
 GET base64 encoded password
